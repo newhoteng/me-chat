@@ -13,6 +13,23 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      colors: {
+        // Gradients
+        'lightmagenta': 'hsl(293, 100%, 63%)',
+        'lightviolet': 'hsl(264, 100%, 61%)' ,
+        // Text
+        'mainheading': 'hsl(271, 36%, 24%)',
+        'subheading': 'hsl(276, 100%, 81%)',
+        'chatonleft': 'hsl(276, 55%, 52%)',
+        'chatonright': 'hsl(271, 15%, 43%)',
+        'placeholder': 'hsl(206, 6%, 79%)',
+        'paragraph': 'hsl(270, 7%, 64%)',
+        // secondary
+        'white': 'hsl(0, 0%, 100%)',
+        'appbackground': 'hsl(270, 20%, 96%)',
+        'submitbutton': 'hsl(271, 36%, 24%)',
+
+      }
     },
   },
   plugins: [],
