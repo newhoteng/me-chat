@@ -13,7 +13,7 @@ export default function Home() {
       <div>Hello</div>
       <form action="" className="w-full absolute bottom-0 left-0 border-2 border-blue-600 p-4">
         <div className="relative rounded-full">
-          <input placeholder="Present-Self says ..." type="text" className="h-[50px] w-full rounded-full pl-4 pr-[50px]"/>
+          <input placeholder="Present-Self says ..." type="text" className="h-[50px] w-full rounded-full pl-4 pr-[50px] placeholder:text-placeholder placeholder:font-light"/>
           <button type="submit" className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center">
             <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
           </button>
