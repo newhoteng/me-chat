@@ -28,6 +28,11 @@ const config: Config = {
         'white': 'hsl(0, 0%, 100%)',
         'appbackground': 'hsl(270, 20%, 96%)',
         'submitbutton': 'hsl(271, 36%, 24%)',
+        'radio': 'hsl(289, 100%, 72%)',
+        'paleviolet': '#f7f5fa',
+        'leftchatbg': '#ede5f3',
+        'pixel1': '#fecfff',
+        'pixel2': '#fbd9ff',
 
       }
     },
