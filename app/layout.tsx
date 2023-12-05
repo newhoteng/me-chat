@@ -7,11 +7,6 @@ const rubik = Rubik({
   weight: ['300', '400', '500', '700'],
 })
 
-// const inter = Rubik({
-//   subsets: ['latin'],
-//   weight: ['400', '500', '700'],
-// })
-
 export const metadata: Metadata = {
   title: 'MeChat',
   description: 'Talk to and decide with your future self',

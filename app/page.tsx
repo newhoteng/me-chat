@@ -10,9 +10,9 @@ export default function Home() {
         <Switch />
         <span>Future-Self</span>
       </header>
-      <div className='pt-2 pb-[82px] border border-red-600'>
-        <p className="w-3/4 p-2 border bg-leftchatbg">That sounds great. I'd be happy with that.</p>
-        <p className="border">Could you send over some pictures of your dog, please?</p>
+      <div className='flex flex-col gap-4 pt-2 pb-[82px] borde border-red-600'>
+        <p className="rounded-bl-none rounded-2xl w-3/4 p-2 text-chatonleft bg-leftchatbg">That sounds great. I'd be happy with that.</p>
+        <p className="rounded-2xl rounded-br-none w-3/4 p-2 relative ml-auto text-chatonright bg-white">Could you send over some pictures of your dog, please?</p>
       </div>
       <form action="" className="w-full absolute bottom-0 left-0 border border-blue-600 p-4">
         <div className="relative rounded-full">
