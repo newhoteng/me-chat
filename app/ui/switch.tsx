@@ -1,14 +1,8 @@
 'use client'
 import React, { useState } from 'react';
 
-export const Switch2 = () => {
-  return (
-    <label className="switch">
-      <input type="checkbox" />
-      <span className="slider" />
-    </label>
-  )
-}
+// false - present
+// true - future
 
 const Switch = () => {
   const [toggle, setToggle] = useState<boolean>(false);
@@ -17,12 +11,12 @@ const Switch = () => {
     <div
       onClick={() => setToggle(!toggle)}
       className={`flex h-6 w-12 cursor-pointer rounded-full p-[2px] ${
-        toggle ? "bg-lightmagenta justify-end" : "bg-lightviolet justify-start"
+        toggle ? "bg-white justify-end" : "bg-leftchatbg justify-start"
       } duration-300`}
     >
       <div
         className={`h-5 w-5 rounded-full ${
-          toggle ? "bg-appbackground" : "bg-appbackground"
+          toggle ? "bg-chatonright" : "bg-chatonleft"
         }`}>
       </div>
     </div>
@@ -30,3 +24,5 @@ const Switch = () => {
 }
 
 export default Switch
+
+// text-chatonleft
