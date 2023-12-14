@@ -5,7 +5,8 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import Switch from './ui/switch';
 
 export default function Home() {
-  const [isFutureSelf, setIsFutureSelf] = useState<boolean>(false);
+  const [ isFutureSelf, setIsFutureSelf ] = useState<boolean>(false);
+  const [ message, setMessage ] = useState<string>('')
 
   return (
     <main className="relative bg-appbackground h-screen mx-auto px-4 pt-[100px]">
@@ -21,9 +22,21 @@ export default function Home() {
       <form action="" className="w-full absolute bottom-0 left-0 p-4">
         <div className="relative rounded-full">
           {isFutureSelf ? (
-            <input placeholder="Future-Self says..." type="text" className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"/>
+            <input
+              placeholder="Future-Self says..."
+              type="text"
+              className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           ) : (
-            <input placeholder="Present-Self says..." type="text" className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"/>
+            <input
+              placeholder="Present-Self says..."
+              type="text"
+              className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
           )}
           <button type="submit" className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center">
             <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
