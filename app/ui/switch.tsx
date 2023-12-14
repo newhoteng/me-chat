@@ -1,11 +1,11 @@
-'use client'
-import React, { useState } from 'react';
+// Toggle component
 
-// false - present
-// true - future
+interface Props {
+  isFutureSelf: boolean;
+  setIsFutureSelf: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-const Switch = ({ isFutureSelf, setIsFutureSelf } ) => {
-  // const [isFutureSelf, setToggle] = useState<boolean>(false);
+const Switch = ({ isFutureSelf, setIsFutureSelf } : Props ) => {
 
   return (
     <div
@@ -24,5 +24,3 @@ const Switch = ({ isFutureSelf, setIsFutureSelf } ) => {
 }
 
 export default Switch
-
-// text-chatonleft
