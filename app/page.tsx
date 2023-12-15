@@ -38,9 +38,11 @@ export default function Home() {
               onChange={(e) => setMessage(e.target.value)}
             />
           )}
-          <button type="submit" className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center">
-            <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
-          </button>
+          {message.trim().length !== 0 && (
+            <button type="submit" className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center">
+              <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
+            </button>
+          )}
         </div>
       </form>
     </main>
