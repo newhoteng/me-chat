@@ -1,12 +1,18 @@
 'use client';
 // import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import Switch from './ui/switch';
 
 export default function Home() {
   const [ isFutureSelf, setIsFutureSelf ] = useState<boolean>(false);
-  const [ message, setMessage ] = useState<string>('')
+  const [ message, setMessage ] = useState<string>('');
+
+  // const taskStorage = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
+  let messages;
+  useEffect(() => {
+
+  }, [])
 
   return (
     <main className="relative bg-appbackground h-screen mx-auto px-4 pt-[100px]">
