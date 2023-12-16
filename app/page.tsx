@@ -7,12 +7,20 @@ import Switch from './ui/switch';
 export default function Home() {
   const [ isFutureSelf, setIsFutureSelf ] = useState<boolean>(false);
   const [ message, setMessage ] = useState<string>('');
+  const [ messagesArray, setMessagesArray ] = useState<string[]>([])
 
   // const taskStorage = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
-  let messages;
-  useEffect(() => {
+  const storedMessages = localStorage.getItem('messages');
 
+  useEffect(() => {
+    if (storedMessages) {
+      setMessagesArray(JSON.parse(storedMessages))
+    }
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem('messages', JSON.stringify(messagesArray))
+  }, [messagesArray])
 
   return (
     <main className="relative bg-appbackground h-screen mx-auto px-4 pt-[100px]">
