@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Rubik, Inter } from 'next/font/google'
+import { Rubik } from 'next/font/google'
 import './globals.css'
 
 const rubik = Rubik({

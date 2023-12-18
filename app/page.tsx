@@ -16,7 +16,7 @@ export default function Home() {
     if (storedMessages) {
       setMessagesArray(JSON.parse(storedMessages))
     }
-  }, [])
+  }, [storedMessages])
 
   useEffect(() => {
     localStorage.setItem('messages', JSON.stringify(messagesArray))
