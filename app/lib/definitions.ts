@@ -1,3 +1,10 @@
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
+
 export type Message = {
   id: string;
   owner: 'current' | 'future';
