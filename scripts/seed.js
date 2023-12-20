@@ -18,13 +18,6 @@ async function seedPersons(client) {
       );
     `;
 
-    // CREATE TABLE persons (
-    //   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    //   name VARCHAR(255) NOT NULL,
-    //   email TEXT NOT NULL UNIQUE,
-    //   password TEXT NOT NULL
-    // );
-
     console.log(`Created "persons" table`);
 
     // Insert data into the "users" table
@@ -46,7 +39,7 @@ async function seedPersons(client) {
       users: insertedUsers,
     };
   } catch (error) {
-    console.error('Error seeding users:', error);
+    console.error('Error seeding persons:', error);
     throw error;
   }
 }
@@ -62,17 +55,9 @@ async function seedMessages(client) {
         person_id UUID REFERENCES persons(id) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
         text VARCHAR(2000) NOT NULL,
         owner VARCHAR(255) NOT NULL,
-        created_at TIMESTAMP NOT NULL,
+        created_at TIMESTAMP NOT NULL
       );
     `;
-
-    // CREATE TABLE messages (
-    //   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-    //   person_id UUID REFERENCES persons(id) ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
-    //   text VARCHAR(2000) NOT NULL,
-    //   owner VARCHAR(255) NOT NULL,
-    //   created_at TIMESTAMP NOT NULL,
-    // );
 
     console.log(`Created "messages" table`);
 
@@ -94,7 +79,7 @@ async function seedMessages(client) {
       messages: insertedMessages,
     };
   } catch (error) {
-    console.error('Error seeding invoices:', error);
+    console.error('Error seeding messages:', error);
     throw error;
   }
 }
