@@ -13,14 +13,21 @@ export default function Home() {
 
   // const storedMessages = localStorage.getItem('messages');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const messages = localStorage.getItem('messages');
-      if (messages) {
-        setMessages(JSON.parse(messages));
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   const messages = localStorage.getItem('messages');
+  //   if (messages) {
+  //     setMessages(JSON.parse(messages));
+  //   }
+  // }, [])
+
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined' && window.localStorage) {
+  //     const messages = localStorage.getItem('messages');
+  //     if (messages) {
+  //       setMessages(JSON.parse(messages));
+  //     }
+  //   }
+  // }, [])
 
   // useEffect(() => {
   //   if (storedMessages) {
