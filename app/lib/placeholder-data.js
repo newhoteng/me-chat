@@ -16,14 +16,14 @@ const persons = [
 const messages = [
   {
     id: '1',
-    person_id: users[0].id,
+    person_id: persons[0].id,
     text: 'Hello World',
     owner: 'current',
     created_at: '2023-07-27 19:07:11.789635',
   },
   {
     id: '2',
-    person_id: users[0].id,
+    person_id: persons[0].id,
     text: 'Hi Harriet',
     owner: 'future',
     created_at: '2023-07-27 19:07:35.347528',
