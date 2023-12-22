@@ -5,11 +5,15 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import Switch from './ui/switch';
 import { Message } from './lib/definitions';
 import { v4 as uuidv4 } from 'uuid';
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [ isFutureSelf, setIsFutureSelf ] = useState<boolean>(false);
   const [ message, setMessage ] = useState<string>('');
-  const [ messages, setMessages ] = useState<Message[]>([])
+  const [ messages, setMessages ] = useState<Message[]>([]);
+
+  // const { data: session, status } = useSession();
+  // console.log(session, status)
 
   // const storedMessages = localStorage.getItem('messages');
 
@@ -56,7 +60,7 @@ export default function Home() {
   // };
 
   return (
-    <main className="relative bg-appbackground h-screen mx-auto px-4 pt-[100px]">
+    <main className="relative bg-appbackground h-screen mx-auto px-4 pt-[200px]">
       <header className="fixed top-0 left-0 w-full h-[100px] flex items-center justify-center gap-6 bg-gradient-to-r from-lightviolet to-lightmagenta text-pixel2 text-lg font-medium">
         <span>Present-Self</span>
         <Switch isFutureSelf={isFutureSelf} setIsFutureSelf={setIsFutureSelf} />

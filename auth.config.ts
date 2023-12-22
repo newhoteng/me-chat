@@ -1,4 +1,8 @@
 import type { NextAuthConfig } from 'next-auth';
+import type { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from "next"
+// import type { NextAuthOptions } from "next-auth"
+// import getServerSession from "next-auth"
+
  
 export const authConfig = {
   pages: {
@@ -21,3 +25,8 @@ export const authConfig = {
   },
   providers: [], // Add providers with an empty array for now
 } satisfies NextAuthConfig;
+
+// Use it in server contexts
+// export function auth(...args: [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]] | [NextApiRequest, NextApiResponse] | []) {
+//   return getServerSession(authConfig)
+// }
