@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Rubik } from 'next/font/google'
 import './globals.css';
 import { signOut } from '@/auth';
-import { SessionProvider } from "next-auth/react"
+// import { SessionProvider } from "next-auth/react"
 // import SignOut from './ui/signout'
 
 const rubik = Rubik({
@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${rubik.className} border-2 border-red-700 pt-[100px]`}>
-        <SessionProvider>
+        {/* <SessionProvider> */}
           <form
             action={async () => {
               'use server';
@@ -36,7 +36,7 @@ export default function RootLayout({
             </button>
           </form>
           {children}
-        </SessionProvider>
+        {/* </SessionProvider> */}
       </body>
     </html>
   )
