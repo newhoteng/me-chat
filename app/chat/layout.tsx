@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </div>
       <div className='border border-blue-700 w-full absolute bottom-0 left-0 p-4'>
-        <MessageInput isFutureSelf={isFutureSelf} setIsFutureSelf={setIsFutureSelf} />
+        <MessageInput isFutureSelf={isFutureSelf} />
       </div>
     </main>
   );

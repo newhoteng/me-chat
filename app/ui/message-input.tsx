@@ -1,39 +1,47 @@
 import React, { useState } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
+import { createMessage } from '../lib/actions';
+import { useFormState } from 'react-dom';
 
 interface Props {
   isFutureSelf: boolean;
-  setIsFutureSelf: React.Dispatch<React.SetStateAction<boolean>>;
+  // setIsFutureSelf: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const MessageInput = ({ isFutureSelf, setIsFutureSelf } : Props) => {
-
+const MessageInput = ({ isFutureSelf } : Props) => {
   const [ message, setMessage ] = useState<string>('');
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  }
+  const owner = isFutureSelf ? 'future' : 'current'
+
+  // const initialState = { message: null, errors: {} };
+  // const [state, dispatch] = useFormState(createMessage('owner'), initialState)
+  const createMessageWithOwner = createMessage.bind(null, owner)
+
   return (
     <>
-      <form onSubmit={handleSubmit} action="">
+      <form 
+        action={createMessageWithOwner}
+      >
         <div className="relative rounded-full">
           {isFutureSelf ? (
             <input
-              name="message"
+              name="text"
               placeholder="Future-Self says..."
               type="text"
               className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              required
             />
           ) : (
             <input
-              name="message"
+              name="text"
               placeholder="Present-Self says..."
               type="text"
               className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              required
             />
           )}
           {message.trim().length !== 0 && (
