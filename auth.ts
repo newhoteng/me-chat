@@ -32,7 +32,6 @@ export const { auth, signIn, signOut } = NextAuth({
           const passwordsMatch = await bcrypt.compare(password, user.password);
  
           if (passwordsMatch) {
-            // localStorage.setItem('user_id', user.id)
             return user;
           }
         }
@@ -52,22 +51,8 @@ export const { auth, signIn, signOut } = NextAuth({
       return token
     },
     async session({ session, token }) {
-        // I skipped the line below coz it gave me a TypeError
-        // session.accessToken = token.accessToken;
         session.user.id = token.id;
-        console.log(session);
         return session;
       },
-  }
-
-  // callbacks: {
-  //   session: async ({ session, user }) => {
-  //     if (session?.user) {
-  //       session.user.id = user.id;
-  //     }
-  //     console.log(session);
-  //     return session;
-  //   },
-  // }
-  
+  } 
 });
