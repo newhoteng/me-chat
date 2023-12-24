@@ -12,13 +12,13 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       // does user have to change to person?
       const isLoggedIn = !!auth?.user;
-      const isOnHomePage = nextUrl.pathname === '/';
+      const isOnHomePage = nextUrl.pathname === '/chat';
       // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnHomePage) {
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       } else if (isLoggedIn) {
-        return Response.redirect(new URL('/', nextUrl));
+        return Response.redirect(new URL('/chat', nextUrl));
       }
       return true;
     },
