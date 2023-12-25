@@ -99,3 +99,5 @@ main().catch((err) => {
     err,
   );
 });
+
+// DELETE FROM messages WHERE id = 'a71b2c96-6ec4-4521-b3b9-536136797dbd';

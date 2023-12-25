@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { createMessage } from '../lib/actions';
 import { useFormState } from 'react-dom';
@@ -10,6 +10,7 @@ interface Props {
 
 const MessageInput = ({ isFutureSelf } : Props) => {
   const [ message, setMessage ] = useState<string>('');
+  // const ref = useRef<HTMLFormElement>(null);
 
   const owner = isFutureSelf ? 'future' : 'current'
 
@@ -19,7 +20,7 @@ const MessageInput = ({ isFutureSelf } : Props) => {
 
   return (
     <>
-      <form 
+      <form
         action={createMessageWithOwner}
       >
         <div className="relative rounded-full">
