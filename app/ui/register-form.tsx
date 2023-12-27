@@ -88,9 +88,9 @@ export default function RegisterForm() {
             <div className="relative">
               <input
                 className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
-                id="confirm password"
+                id="confirm_password"
                 type="password"
-                name="confirm password"
+                name="confirm_password"
                 placeholder="Confirm password"
                 required
                 minLength={6}
