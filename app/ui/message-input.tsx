@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { createMessage } from '../lib/actions';
-// import { useFormState } from 'react-dom';
 
 interface Props {
   isFutureSelf: boolean;
@@ -47,10 +46,6 @@ const MessageInput = ({ isFutureSelf } : Props) => {
             <button
               type="submit"
               className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center"
-              // onClick={async () => {
-              //   await createMessage(owner, message)
-              //   setMessage('')
-              // }}
             >
               <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
             </button>

@@ -1,5 +1,6 @@
 'use server';
 import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
 import { auth } from '@/auth';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
@@ -13,29 +14,33 @@ const UserSchema = z.object({
 });
 
 
+export const createUser = async () => {
+
+}
+
 export async function authenticate(
   prevState: string | undefined,
   formData: FormData,
 ) {
   try {
-    await signIn('credentials', Object.fromEntries(formData));
-    console.log('through: try')
+    await signIn('credentials', formData);
   } catch (error) {
-    console.log('through: catch')
-    if ((error as Error).message.includes('CredentialsSignin')) {
-      return 'CredentialSignin';
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
     }
     throw error;
   }
 }
 
-export const createUser = async () => {
-
-}
-
 
 export const createMessage = async (owner: string, text: string) => {
 
+  const userData = await auth();
   // const { user } = await auth();
   const user_id = '410544b2-4001-4271-9855-fec4b6a6442a';
   const date = new Date().toISOString();
