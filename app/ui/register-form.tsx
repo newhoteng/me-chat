@@ -1,16 +1,14 @@
 'use client';
 
-// import { lusitana } from '@/app/ui/fonts';
 import clsx from 'clsx';
 import {
   AtSymbolIcon,
   KeyIcon,
   ExclamationCircleIcon,
+  UserIcon
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-// import { Button } from './button';
 import { useFormState, useFormStatus } from 'react-dom';
-// import { authenticate } from '@/app/lib/actions';
 
 export default function RegisterForm() {
   // const [code, action] = useFormState(authenticate, undefined);
@@ -38,7 +36,7 @@ export default function RegisterForm() {
                 placeholder="Enter your full name"
                 required
               />
-              <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
           <div>
@@ -101,7 +99,7 @@ export default function RegisterForm() {
             </div>
           </div>
         </div>
-        <LoginButton />
+        <RegisterButton />
         {/* <div className="flex h-8 items-end space-x-1">
           {code === 'CredentialSignin' && (
             <>
@@ -113,11 +111,12 @@ export default function RegisterForm() {
           )}
         </div> */}
       </div>
+      
     </form>
   );
 }
 
-function LoginButton() {
+function RegisterButton() {
   const { pending } = useFormStatus();
 
   return (

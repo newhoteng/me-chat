@@ -1,6 +1,5 @@
 'use client';
 
-// import { lusitana } from '@/app/ui/fonts';
 import clsx from 'clsx';
 import {
   AtSymbolIcon,
@@ -8,7 +7,6 @@ import {
   ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
-// import { Button } from './button';
 import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 
@@ -17,7 +15,7 @@ export default function LoginForm() {
 
   return (
     <form action={action} className="space-y-3">
-      <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
+      <div className="flex-1 rounded-lg bg-appbackground px-6 pb-4 pt-8">
         <h1 className={`mb-3 text-xl`}>
           Please log in to continue.
         </h1>
