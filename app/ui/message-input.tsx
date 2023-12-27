@@ -1,27 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { createMessage } from '../lib/actions';
-import { useFormState } from 'react-dom';
+// import { useFormState } from 'react-dom';
 
 interface Props {
   isFutureSelf: boolean;
-  // setIsFutureSelf: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MessageInput = ({ isFutureSelf } : Props) => {
   const [ message, setMessage ] = useState<string>('');
-  // const ref = useRef<HTMLFormElement>(null);
 
   const owner = isFutureSelf ? 'future' : 'current'
 
-  // const initialState = { message: null, errors: {} };
-  // const [state, dispatch] = useFormState(createMessage('owner'), initialState)
-  const createMessageWithOwner = createMessage.bind(null, owner)
-
   return (
     <>
-      <form
-        action={createMessageWithOwner}
+      {/* Children server component */}
+      <form 
+        action={async () => {
+          await createMessage(owner, message)
+          setMessage('')
+        }}
       >
         <div className="relative rounded-full">
           {isFutureSelf ? (
@@ -46,7 +44,14 @@ const MessageInput = ({ isFutureSelf } : Props) => {
             />
           )}
           {message.trim().length !== 0 && (
-            <button type="submit" className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center">
+            <button
+              type="submit"
+              className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center"
+              // onClick={async () => {
+              //   await createMessage(owner, message)
+              //   setMessage('')
+              // }}
+            >
               <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
             </button>
           )}

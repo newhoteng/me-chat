@@ -5,9 +5,10 @@ import { auth } from '@/auth';
 const Messages = async () => {
 
   const userData = await auth();
-  const user_id = userData?.user.id;
+  console.log(userData);
+  // const user_id = userData?.user.id;
 
-  const messages = await fetchMessages(user_id);
+  const messages = await fetchMessages();
 
   return (
     <>

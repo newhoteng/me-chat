@@ -5,6 +5,13 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { sql } from '@vercel/postgres';
 
+const UserSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  email: z.string().email(),
+  password: z.string().min(6, { message: "Must be 6 or more characters long" }),
+});
+
 
 export async function authenticate(
   prevState: string | undefined,
@@ -12,7 +19,9 @@ export async function authenticate(
 ) {
   try {
     await signIn('credentials', Object.fromEntries(formData));
+    console.log('through: try')
   } catch (error) {
+    console.log('through: catch')
     if ((error as Error).message.includes('CredentialsSignin')) {
       return 'CredentialSignin';
     }
@@ -20,12 +29,15 @@ export async function authenticate(
   }
 }
 
-export const createMessage = async (owner: string, formData: FormData) => {
+export const createUser = async () => {
 
-  const text = String(formData.get('text'));
+}
 
-  const userData = await auth();
-  const user_id = userData?.user.id;
+
+export const createMessage = async (owner: string, text: string) => {
+
+  // const { user } = await auth();
+  const user_id = '410544b2-4001-4271-9855-fec4b6a6442a';
   const date = new Date().toISOString();
 
   try {
@@ -36,7 +48,7 @@ export const createMessage = async (owner: string, formData: FormData) => {
   } catch(error) {
     // If a database error occurs, return a more specific error.
     return {
-      message: 'Database Error: Failed to Message.',
+      message: 'Database Error: Failed to add Message.',
     };
   }
 
