@@ -18,7 +18,7 @@ export default function LoginForm() {
   return (
     <form action={action} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className={`mb-3 text-2xl`}>
+        <h1 className={`mb-3 text-xl`}>
           Please log in to continue.
         </h1>
         <div className="w-full">
@@ -99,7 +99,7 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     <button
       {...rest}
       className={clsx(
-        'flex h-10 items-center rounded-lg bg-blue-500 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
+        'flex h-10 items-center rounded-lg bg-lightviolet px-4 text-sm font-medium text-white transition-colors hover:bg-lightmagenta focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 active:bg-blue-600 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
         className,
       )}
     >

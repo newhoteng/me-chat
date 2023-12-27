@@ -4,9 +4,6 @@ import { auth } from '@/auth';
 
 const Messages = async () => {
 
-  const user = await auth();
-  console.log(user);
-
   const messages = await fetchMessages();
 
   return (

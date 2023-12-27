@@ -41,8 +41,8 @@ export async function authenticate(
 export const createMessage = async (owner: string, text: string) => {
 
   const userData = await auth();
-  // const { user } = await auth();
-  const user_id = '410544b2-4001-4271-9855-fec4b6a6442a';
+  const user_id = userData?.user.id;
+
   const date = new Date().toISOString();
 
   try {
