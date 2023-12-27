@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchMessages } from '../lib/data';
-import { auth } from '@/auth';
 
 const Messages = async () => {
 

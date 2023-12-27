@@ -4,17 +4,20 @@ import clsx from 'clsx';
 import {
   AtSymbolIcon,
   KeyIcon,
-  ExclamationCircleIcon,
   UserIcon
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { useFormState, useFormStatus } from 'react-dom';
+import { createUser } from '../lib/actions';
 
 export default function RegisterForm() {
-  // const [code, action] = useFormState(authenticate, undefined);
+  const initialState = { message: null, errors: {} }
+  // const [state, dispatch] = useFormState(createUser, initialState);
+  const [state, dispatch] = useFormState(createUser, initialState);
+  console.log(state)
 
   return (
-    <form action="" className="space-y-3">
+    <form action={dispatch} className="space-y-3">
       <div className="flex-1 rounded-lg bg-appbackground px-6 pb-4 pt-8">
         <h1 className={`mb-3 text-xl`}>
           Please register to continue.
@@ -39,6 +42,19 @@ export default function RegisterForm() {
               <UserIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {state.errors?.name ? (
+            <div
+              id="customer-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.name.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null}
+
+          {/* Email Section */}
           <div>
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
@@ -58,6 +74,19 @@ export default function RegisterForm() {
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {state.errors?.email ? (
+            <div
+              id="amount-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.email.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null}
+
+          {/* Password section */}
           <div className="mt-4">
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
@@ -78,6 +107,19 @@ export default function RegisterForm() {
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {state.errors?.password ? (
+            <div
+              id="amount-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.password.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null}
+
+          {/* Confirm Password section */}
           <div className="mt-4">
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
@@ -98,6 +140,17 @@ export default function RegisterForm() {
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
+          {state.errors?.confirm_password ? (
+            <div
+              id="amount-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              {state.errors.confirm_password.map((error: string) => (
+                <p key={error}>{error}</p>
+              ))}
+            </div>
+          ) : null}
         </div>
         <RegisterButton />
         {/* <div className="flex h-8 items-end space-x-1">
