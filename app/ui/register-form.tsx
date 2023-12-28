@@ -9,12 +9,13 @@ import {
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { useFormState, useFormStatus } from 'react-dom';
 import { createUser } from '../lib/actions';
+import { State } from '../lib/actions';
 
 export default function RegisterForm() {
   const initialState = { message: null, errors: {} }
-  // const [state, dispatch] = useFormState(createUser, initialState);
-  const [state, dispatch] = useFormState(createUser, initialState);
-  console.log(state)
+
+  const [state, dispatch] = useFormState<State, FormData>(createUser, initialState);
+  // console.log(state)
 
   return (
     <form action={dispatch} className="space-y-3">
@@ -23,6 +24,7 @@ export default function RegisterForm() {
           Please register to continue.
         </h1>
         <div className="w-full">
+          {/* User name section */}
           <div>
             <label
               className="mb-3 mt-5 block text-xs font-medium text-gray-900"
@@ -151,20 +153,19 @@ export default function RegisterForm() {
               ))}
             </div>
           ) : null}
+          {/* General error message */}
+          {state.errors ? (
+            <div
+              // id="status-error"
+              aria-live="polite"
+              className="mt-2 text-sm text-red-500"
+            >
+              <p>{state.message}</p>
+            </div>
+          ) : null}
         </div>
         <RegisterButton />
-        {/* <div className="flex h-8 items-end space-x-1">
-          {code === 'CredentialSignin' && (
-            <>
-              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-              <p aria-live="polite" className="text-sm text-red-500">
-                Invalid credentials
-              </p>
-            </>
-          )}
-        </div> */}
       </div>
-      
     </form>
   );
 }

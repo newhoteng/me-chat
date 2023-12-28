@@ -9,15 +9,27 @@ import { sql } from '@vercel/postgres';
 const bcrypt = require('bcrypt');
 
 const UserSchema = z.object({
-  id: z.string(),
+  // id: z.string(),
   name: z.string(),
-  email: z.string().email(),
+  email: z.string().email().refine(async (email) => {
+    const data = await sql`SELECT * FROM persons WHERE email = ${email}`;
+    const row = data.rows;
+
+    return email !== row[0]?.email
+    // const data = await sql`SELECT email FROM persons`;
+    // const rows = data.rows;
+
+    // return email !== rows.find((object) => object.email === email)?.email;
+  }, {
+    message: "Email is already registered, log in instead"
+  }),
   password: z.string().min(6, { message: "Must be 6 or more characters long" }),
-  // can i use zod to check if two fields match?
   confirm_password: z.string()
+}).refine((data) => data.password === data.confirm_password, {
+  message: "Passwords don't match", 
 });
 
-const CreateNewUser = UserSchema.omit({ id: true });
+// const CreateNewUser = UserSchema.omit({ id: true });
 
 export type State = {
   errors?: {
@@ -31,7 +43,7 @@ export type State = {
 
 export const createUser = async (prevState: State, formData: FormData) => {
 
-  const validatedFields = CreateNewUser.safeParse({
+  const validatedFields = await UserSchema.safeParseAsync({
     name: formData.get('name'),
     email: formData.get('email'),
     password: formData.get('password'),
@@ -41,7 +53,7 @@ export const createUser = async (prevState: State, formData: FormData) => {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Missing Fields. Failed to Create Invoice.',
+      message: 'Registration failed.',
     };
   }
 
@@ -55,7 +67,6 @@ export const createUser = async (prevState: State, formData: FormData) => {
       VALUES (${name}, ${email}, ${hashedPassword})
     `;
   } catch(error) {
-    // If a database error occurs, return a more specific error.
     return {
       message: 'Database Error: Failed to Create User.',
     };
@@ -97,7 +108,6 @@ export const createMessage = async (owner: string, text: string) => {
       VALUES (${user_id}, ${text}, ${owner}, ${date})
     `;
   } catch(error) {
-    // If a database error occurs, return a more specific error.
     return {
       message: 'Database Error: Failed to add Message.',
     };
