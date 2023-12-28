@@ -153,6 +153,7 @@ export default function RegisterForm() {
               ))}
             </div>
           ) : null}
+
           {/* General error message */}
           {state.errors ? (
             <div

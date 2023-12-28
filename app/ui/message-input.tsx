@@ -15,10 +15,10 @@ const MessageInput = ({ isFutureSelf } : Props) => {
     <>
       {/* Children server component */}
       <form 
-        action={async () => {
-          await createMessage(owner, message)
-          setMessage('')
-        }}
+        // action={async () => {
+        //   await createMessage(owner, message)
+        //   setMessage('')
+        // }}
       >
         <div className="relative rounded-full">
           {isFutureSelf ? (
@@ -26,7 +26,7 @@ const MessageInput = ({ isFutureSelf } : Props) => {
               name="text"
               placeholder="Future-Self says..."
               type="text"
-              className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
+              className="text-wrap h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
@@ -46,6 +46,10 @@ const MessageInput = ({ isFutureSelf } : Props) => {
             <button
               type="submit"
               className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center"
+              onClick={async () => {
+                await createMessage(owner, message)
+                setMessage('')
+              }}
             >
               <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
             </button>

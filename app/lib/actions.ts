@@ -1,4 +1,5 @@
 'use server';
+
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { auth } from '@/auth';
@@ -22,7 +23,7 @@ const UserSchema = z.object({
   password: z.string().min(6, { message: "Must be 6 or more characters long" }),
   confirm_password: z.string()
 }).refine((data) => data.password === data.confirm_password, {
-  message: "Passwords don't match", 
+  message: "Passwords don't match, Registration failed", 
 });
 
 // const CreateNewUser = UserSchema.omit({ id: true });
