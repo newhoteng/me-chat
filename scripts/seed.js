@@ -100,7 +100,11 @@ main().catch((err) => {
   );
 });
 
-// DELETE FROM messages WHERE id = '6f5cbd4a-5139-4ddf-97f5-57690879938b';
+// DELETE FROM persons WHERE id = '76f09b6b-362e-4d06-a82e-9b4024ed8ec7';
+// DELETE FROM persons WHERE id = 'ac1cdb02-3313-40d6-b6be-799d134705f7';
+// DELETE FROM persons WHERE id = 'c1af307f-6854-422f-9337-850db77618e2';
+
+
 // DELETE FROM messages WHERE id = 'b82e23af-042f-400c-bb63-3d5af650753d';
 // DELETE FROM messages WHERE id = '6fd1f905-5f68-4b92-8df2-c0dd7be98264';
 // DELETE FROM messages WHERE id = 'c57b563e-5a51-4a95-a82e-3547cdaddf3b';

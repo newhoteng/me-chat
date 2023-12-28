@@ -13,13 +13,9 @@ const UserSchema = z.object({
   name: z.string(),
   email: z.string().email().refine(async (email) => {
     const data = await sql`SELECT * FROM persons WHERE email = ${email}`;
-    const row = data.rows;
+    const rows = data.rows;
 
-    return email !== row[0]?.email
-    // const data = await sql`SELECT email FROM persons`;
-    // const rows = data.rows;
-
-    // return email !== rows.find((object) => object.email === email)?.email;
+    return email !== rows[0]?.email
   }, {
     message: "Email is already registered, log in instead"
   }),
@@ -58,13 +54,20 @@ export const createUser = async (prevState: State, formData: FormData) => {
   }
 
   const { name, email, password } = validatedFields.data;
+  const nameWords = name.split(" ");
+
+  for (let i = 0; i < nameWords.length; i++) {
+    nameWords[i] = nameWords[i][0].toUpperCase() + nameWords[i].substring(1).toLowerCase();
+  }
+  const formattedName = nameWords.join(" ")
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // Insert data into the database
   try {
     await sql`
       INSERT INTO persons (name, email, password)
-      VALUES (${name}, ${email}, ${hashedPassword})
+      VALUES (${formattedName}, ${email}, ${hashedPassword})
     `;
   } catch(error) {
     return {
