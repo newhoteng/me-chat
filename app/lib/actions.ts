@@ -26,8 +26,6 @@ const UserSchema = z.object({
   message: "Passwords don't match, Registration failed", 
 });
 
-// const CreateNewUser = UserSchema.omit({ id: true });
-
 export type State = {
   errors?: {
     name?: string[];

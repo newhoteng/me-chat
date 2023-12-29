@@ -15,7 +15,6 @@ export default function RegisterForm() {
   const initialState = { message: null, errors: {} }
 
   const [state, dispatch] = useFormState<State, FormData>(createUser, initialState);
-  // console.log(state)
 
   return (
     <form action={dispatch} className="space-y-3">
@@ -24,6 +23,7 @@ export default function RegisterForm() {
           Please register to continue.
         </h1>
         <div className="w-full">
+          
           {/* User name section */}
           <div>
             <label

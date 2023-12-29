@@ -13,7 +13,6 @@ const MessageInput = ({ isFutureSelf } : Props) => {
 
   return (
     <>
-      {/* Children server component */}
       <form 
         // action={async () => {
         //   await createMessage(owner, message)
