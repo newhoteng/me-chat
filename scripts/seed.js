@@ -111,3 +111,7 @@ main().catch((err) => {
 // DELETE FROM messages WHERE id = 'a6af9f48-1051-4962-bd69-cb114c154c0a';
 // DELETE FROM messages WHERE id = '94a4774f-e249-48ba-8c5e-5003c7f9a534';
 // DELETE FROM messages WHERE id = 'f2bc0dc8-3ac5-4c56-bd6b-c45bdf13a4f8';
+
+// ALTER TABLE persons ADD COLUMN persona text NOT NULL DEFAULT "current"; DID NOT WORK
+
+// ALTER TABLE persons ADD persona text NOT NULL CONSTRAINT store_persona DEFAULT 'current';
