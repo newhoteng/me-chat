@@ -4,9 +4,10 @@ import { createMessage } from '../lib/actions';
 
 interface Props {
   isFutureSelf: boolean;
+  addOptimisticMessage: (action: string) => void;
 }
 
-const MessageInput = ({ isFutureSelf } : Props) => {
+const MessageInput = ({ isFutureSelf, addOptimisticMessage } : Props) => {
   const [ message, setMessage ] = useState<string>('');
 
   const owner = isFutureSelf ? 'future' : 'current'
@@ -46,8 +47,9 @@ const MessageInput = ({ isFutureSelf } : Props) => {
               type="submit"
               className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center"
               onClick={async () => {
-                await createMessage(owner, message)
-                setMessage('')
+                addOptimisticMessage(message);
+                setMessage('');
+                await createMessage(owner, message);
               }}
             >
               <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />

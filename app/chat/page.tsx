@@ -3,7 +3,7 @@ import SignOut from '../ui/signout';
 import Header from '../ui/header';
 import MessagesThread from '../ui/messages-thread';
 import { fetchMessages, getUserInfo } from '../lib/data';
-import { Message, User } from '../lib/definitions';
+import { User } from '../lib/definitions';
 
 const Page = async () => {
 

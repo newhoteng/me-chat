@@ -1,24 +1,31 @@
 'use client';
 
-import { Message } from 'postcss';
 import React from 'react';
-import { User } from '../lib/definitions';
-// import Result from 'postcss/lib/result';
-// import { fetchMessages } from '../lib/data';
+import { User, Message } from '../lib/definitions';
 import MessageInput from './message-input';
+import { useOptimistic } from 'react';
 
 interface Props {
-  person: User
+  person: User;
   messages: Message[];
 }
 
 const MessagesThread = ({ person, messages } : Props) => {
-  // const messages = await fetchMessages();
+  const { isfutureself } = person;
+
+  const [ optmisticMessages, addOptimisticMessage ] = useOptimistic(
+    messages, (state, newtext: string) => [
+      ...state, {
+      text: newtext,
+      sending: true
+      }
+    ]
+  )
 
   return (
     <div className='relative borde border-purple-900 h-[calc(100vh-100px)]'>
       <div className='border border-green-600 no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
-        {messages.map((message) => (
+        {optmisticMessages.map((message) => (
           <p
             key={message.id}
             className={`rounded-2xl w-3/4 p-2 ${
@@ -26,11 +33,12 @@ const MessagesThread = ({ person, messages } : Props) => {
             } `}
           >
             {message.text}
+            {!!message.sending && <small>(Sending)</small>}
           </p>
         ))}
       </div>
       <div className='border border-yellow-600 w-full absolute bottom-0 left-0 py-4'>
-        <MessageInput isFutureSelf={person.isfutureself}/>
+        <MessageInput isFutureSelf={isfutureself} addOptimisticMessage={addOptimisticMessage}/>
       </div>
     </div>
   )
