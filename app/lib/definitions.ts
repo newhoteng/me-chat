@@ -10,7 +10,7 @@ export type Message = {
   id?: string;
   person_id?: string;
   text: string;
-  owner?: 'current' | 'future';
+  owner: 'current' | 'future';
   date?: string;
   sending?: boolean
 };

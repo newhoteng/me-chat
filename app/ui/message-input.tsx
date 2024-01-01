@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { RiSendPlaneFill } from "react-icons/ri";
 import { createMessage } from '../lib/actions';
+import { Message } from '../lib/definitions';
 
 interface Props {
   isFutureSelf: boolean;
-  addOptimisticMessage: (action: string) => void;
+  addOptimisticMessage: (action: Message) => void
 }
 
 const MessageInput = ({ isFutureSelf, addOptimisticMessage } : Props) => {
@@ -47,12 +48,16 @@ const MessageInput = ({ isFutureSelf, addOptimisticMessage } : Props) => {
               type="submit"
               className="absolute top-[7.5px] right-[7.5px] bg-submitbutton w-[35px] h-[35px] rounded-full flex items-center justify-center"
               onClick={async () => {
-                addOptimisticMessage(message);
+                addOptimisticMessage({
+                  text: message,
+                  owner: owner,
+                  sending: true
+                });
                 setMessage('');
                 await createMessage(owner, message);
               }}
             >
-              <RiSendPlaneFill className="text-white text-xl borde border-yellow-50" />
+              <RiSendPlaneFill className="text-white text-xl" />
             </button>
           )}
         </div>

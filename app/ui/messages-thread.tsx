@@ -14,11 +14,8 @@ const MessagesThread = ({ person, messages } : Props) => {
   const { isfutureself } = person;
 
   const [ optmisticMessages, addOptimisticMessage ] = useOptimistic(
-    messages, (state, newtext: string) => [
-      ...state, {
-      text: newtext,
-      sending: true
-      }
+    messages, (state, newMessage: Message) => [
+      ...state, newMessage
     ]
   )
 
