@@ -1,21 +1,22 @@
-// 'use client';
+'use client';
 
 import { Message } from 'postcss';
 import React from 'react';
 import { User } from '../lib/definitions';
-import { fetchMessages } from '../lib/data';
+// import Result from 'postcss/lib/result';
+// import { fetchMessages } from '../lib/data';
 import MessageInput from './message-input';
 
 interface Props {
   person: User
-  // messages: Message[];
+  messages: Message[];
 }
 
-const MessagesThread = async ({ person } : Props) => {
-  const messages = await fetchMessages();
+const MessagesThread = ({ person, messages } : Props) => {
+  // const messages = await fetchMessages();
 
   return (
-    <div className='border-2 border-purple-900 h-[calc(100vh-100px)]'>
+    <div className='relative borde border-purple-900 h-[calc(100vh-100px)]'>
       <div className='border border-green-600 no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
         {messages.map((message) => (
           <p
@@ -28,7 +29,9 @@ const MessagesThread = async ({ person } : Props) => {
           </p>
         ))}
       </div>
-      {/* <MessageInput /> */}
+      <div className='border border-yellow-600 w-full absolute bottom-0 left-0 py-4'>
+        <MessageInput isFutureSelf={person.isfutureself}/>
+      </div>
     </div>
   )
 }

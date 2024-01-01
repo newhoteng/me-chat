@@ -1,11 +1,9 @@
 import React from 'react';
 import SignOut from '../ui/signout';
-// import Messages from '../ui/messages';
 import Header from '../ui/header';
 import MessagesThread from '../ui/messages-thread';
 import { fetchMessages, getUserInfo } from '../lib/data';
-import { auth } from '@/auth';
-// import { Message, User } from '../lib/definitions';
+import { Message, User } from '../lib/definitions';
 
 const Page = async () => {
 
@@ -18,10 +16,9 @@ const Page = async () => {
         <Header person={person!} />
       </header>
       <section>
-        <MessagesThread person={person!} />
+        <MessagesThread person={person as User} messages={messages} />
       </section>
-      {/* <SignOut />
-      <Messages /> */}
+      {/* <SignOut /> */}
     </div>
   )
 }

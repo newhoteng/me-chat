@@ -3,7 +3,7 @@ export type User = {
   name: string;
   email: string;
   password: string;
-  persona: string;
+  isfutureself: boolean;
 };
 
 export type Message = {

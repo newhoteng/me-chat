@@ -1,6 +1,7 @@
 import React from 'react';
 import Switch from './switch';
 import type { User } from '@/app/lib/definitions';
+import { togglePersona } from '../lib/actions';
 
 interface Props {
   person: User;
@@ -11,7 +12,7 @@ const Header = ({ person } : Props ) => {
   return (
     <>
       <span>Present-Self</span>
-        {/* <Switch isFutureSelf={isFutureSelf} setIsFutureSelf={setIsFutureSelf} /> */}
+        <Switch isFutureSelf={person.isfutureself} id={person.id} />
       <span>Future-Self</span>
     </>
   )

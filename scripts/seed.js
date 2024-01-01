@@ -115,3 +115,7 @@ main().catch((err) => {
 // ALTER TABLE persons ADD COLUMN persona text NOT NULL DEFAULT "current"; DID NOT WORK
 
 // ALTER TABLE persons ADD persona text NOT NULL CONSTRAINT store_persona DEFAULT 'current';
+
+// ALTER TABLE persons ADD isFutureSelf BOOLEAN NOT NULL CONSTRAINT store_persona DEFAULT false;
+
+// ALTER TABLE persons DROP COLUMN persona;

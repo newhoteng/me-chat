@@ -1,15 +1,19 @@
-// Toggle component
+'use client';
+
+import { togglePersona } from "../lib/actions";
 
 interface Props {
   isFutureSelf: boolean;
-  setIsFutureSelf: React.Dispatch<React.SetStateAction<boolean>>;
+  id: string;
 }
 
-const Switch = ({ isFutureSelf, setIsFutureSelf } : Props ) => {
+const Switch = ({ isFutureSelf, id } : Props ) => {
 
   return (
     <div
-      onClick={() => setIsFutureSelf(!isFutureSelf)}
+      onClick={async () => {
+        await togglePersona(isFutureSelf, id)
+      }}
       className={`flex h-6 w-12 cursor-pointer rounded-full p-[2px] ${
         isFutureSelf ? "bg-white justify-end" : "bg-leftchatbg justify-start"
       } duration-300`}

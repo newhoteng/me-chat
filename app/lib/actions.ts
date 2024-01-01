@@ -117,3 +117,18 @@ export const createMessage = async (owner: string, text: string) => {
 
   revalidatePath('/chat');
 }
+
+export const togglePersona = async (currentPersona: boolean, id: string) => {
+  try {
+    await sql`
+      UPDATE persons SET isFutureSelf = ${!currentPersona} WHERE id = ${id};
+    `;
+  } catch(error) {
+    return {
+      message: 'Database Error: Failed to switch persona.',
+    };
+  }
+ 
+  revalidatePath('/chat');
+
+}
