@@ -11,7 +11,7 @@ const Page = async () => {
   const messages = await fetchMessages();
 
   return (
-    <div className="border border-red-600 relative h-screen bg-appbackground mx-auto px-4 pt-[100px]">
+    <div className="relative h-screen bg-appbackground mx-auto px-4 pt-[100px]">
       <header className="fixed top-0 left-0 w-full h-[100px] flex items-center justify-center gap-6 bg-gradient-to-r from-lightviolet to-lightmagenta text-pixel2 text-lg font-medium">
         <Header person={person!} />
       </header>

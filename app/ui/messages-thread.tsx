@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { User, Message } from '../lib/definitions';
 import MessageInput from './message-input';
 import { useOptimistic } from 'react';
@@ -13,15 +13,25 @@ interface Props {
 const MessagesThread = ({ person, messages } : Props) => {
   const { isfutureself } = person;
 
+  const messagesEndRef = useRef<null | HTMLParagraphElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   const [ optmisticMessages, addOptimisticMessage ] = useOptimistic(
     messages, (state, newMessage: Message) => [
       ...state, newMessage
     ]
   )
 
+  useEffect(() => {
+    scrollToBottom()
+  }, [optmisticMessages]);
+
   return (
-    <div className='relative borde border-purple-900 h-[calc(100vh-100px)]'>
-      <div className='border border-green-600 no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
+    <div className='relative h-[calc(100vh-100px)]'>
+      <div className='no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
         {optmisticMessages.map((message) => (
           <p
             key={message.id}
@@ -33,16 +43,13 @@ const MessagesThread = ({ person, messages } : Props) => {
             {!!message.sending && <small>(Sending)</small>}
           </p>
         ))}
+        <p ref={messagesEndRef}/>
       </div>
-      <div className='border border-yellow-600 w-full absolute bottom-0 left-0 py-4'>
+      <div className='border border-yellow-60 w-full absolute bottom-0 left-0 py-4'>
         <MessageInput isFutureSelf={isfutureself} addOptimisticMessage={addOptimisticMessage}/>
       </div>
     </div>
   )
 }
-
-{/* <div className='no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 pt-2 py-4'>
-        
-</div> */}
 
 export default MessagesThread
