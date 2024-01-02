@@ -23,7 +23,8 @@ const UserSchema = z.object({
   password: z.string().min(6, { message: "Must be 6 or more characters long" }),
   confirm_password: z.string()
 }).refine((data) => data.password === data.confirm_password, {
-  message: "Passwords don't match, Registration failed", 
+  message: "Passwords don't match",
+  path: ['confirm_password'] 
 });
 
 export type State = {

@@ -153,9 +153,11 @@ export default function RegisterForm() {
               ))}
             </div>
           ) : null}
-
-          {/* General error message */}
-          {state.errors ? (
+        </div>
+        <RegisterButton />
+        
+        {/* General error message */}
+        {state.errors ? (
             <div
               // id="status-error"
               aria-live="polite"
@@ -164,8 +166,6 @@ export default function RegisterForm() {
               <p>{state.message}</p>
             </div>
           ) : null}
-        </div>
-        <RegisterButton />
       </div>
     </form>
   );

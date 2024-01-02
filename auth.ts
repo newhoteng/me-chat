@@ -44,14 +44,12 @@ export const { auth, signIn, signOut } = NextAuth({
       if (account) {
         token.accessToken = account.access_token
         // token.id = user?.id
-        console.log(token)
       }
       return token
     },
     session({ session, token }) {
       // session.user.id = token.id
       session.user.id = token.sub;
-      console.log(session)
       return session;
     },
   }
