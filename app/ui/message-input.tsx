@@ -27,7 +27,7 @@ const MessageInput = ({ isFutureSelf, addOptimisticMessage } : Props) => {
               name="text"
               placeholder="Future-Self says..."
               type="text"
-              className="text-wrap h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
+              className="text-wrap h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-normal"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
@@ -37,7 +37,7 @@ const MessageInput = ({ isFutureSelf, addOptimisticMessage } : Props) => {
               name="text"
               placeholder="Present-Self says..."
               type="text"
-              className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder placeholder:font-light"
+              className="h-[50px] w-full rounded-full pl-4 pr-[50px] focus:outline-none placeholder:text-placeholder"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required

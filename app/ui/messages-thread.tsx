@@ -45,7 +45,7 @@ const MessagesThread = ({ person, messages } : Props) => {
         ))}
         <p ref={messagesEndRef}/>
       </div>
-      <div className='border border-yellow-60 w-full absolute bottom-0 left-0 py-4'>
+      <div className='bg-blue-100 w-full absolute bottom-0 left-0 p-4'>
         <MessageInput isFutureSelf={isfutureself} addOptimisticMessage={addOptimisticMessage}/>
       </div>
     </div>
