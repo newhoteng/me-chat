@@ -18,7 +18,7 @@ const Page = async () => {
       <section>
         <MessagesThread person={person as User} messages={messages} />
       </section>
-      {/* <SignOut /> */}
+      <SignOut />
     </div>
   )
 }

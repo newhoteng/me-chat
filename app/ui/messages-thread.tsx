@@ -30,7 +30,7 @@ const MessagesThread = ({ person, messages } : Props) => {
   }, [optmisticMessages]);
 
   return (
-    <div className='relative h-[calc(100vh-100px)]'>
+    <div className='h-[calc(100vh-100px)]'>
       <div className='no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
         {optmisticMessages.map((message) => (
           <p
