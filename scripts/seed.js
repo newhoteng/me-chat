@@ -104,10 +104,7 @@ main().catch((err) => {
 // DELETE FROM persons WHERE id = 'ac1cdb02-3313-40d6-b6be-799d134705f7';
 // DELETE FROM persons WHERE id = 'c1af307f-6854-422f-9337-850db77618e2';
 
-
-// DELETE FROM messages WHERE person_id = '410544b2-4001-4271-9855-fec4b6a6442a';
-
-// DELETE FROM messages WHERE id = '6fd1f905-5f68-4b92-8df2-c0dd7be98264';
+// DELETE FROM messages WHERE id = 'f03cf922-c2b2-4469-af35-03b48746c417';
 // DELETE FROM messages WHERE id = 'c57b563e-5a51-4a95-a82e-3547cdaddf3b';
 // DELETE FROM messages WHERE id = 'a6af9f48-1051-4962-bd69-cb114c154c0a';
 // DELETE FROM messages WHERE id = '94a4774f-e249-48ba-8c5e-5003c7f9a534';
