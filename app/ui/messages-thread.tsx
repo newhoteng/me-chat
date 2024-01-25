@@ -2,6 +2,8 @@
 
 import React, { useRef, useEffect } from 'react';
 import { User, Message } from '../lib/definitions';
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { CiEdit } from "react-icons/ci";
 import MessageInput from './message-input';
 import { useOptimistic } from 'react';
 

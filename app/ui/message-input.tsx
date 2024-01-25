@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { RiSendPlaneFill, RiDeleteBin6Line } from "react-icons/ri";
-import { CiEdit } from "react-icons/ci";
-// import {  } from "react-icons/ri";
+import { RiSendPlaneFill } from "react-icons/ri";
 import { createMessage } from '../lib/actions';
 import { Message } from '../lib/definitions';
 
