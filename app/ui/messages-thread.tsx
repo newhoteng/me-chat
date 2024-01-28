@@ -44,6 +44,7 @@ const MessagesThread = ({ person, messages } : Props) => {
             {message.text}
             {!!message.sending && <small>(Sending)</small>}
             <RiDeleteBin6Line />
+            <CiEdit />
           </p>
         ))}
         <p ref={messagesEndRef}/>
