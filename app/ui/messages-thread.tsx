@@ -35,17 +35,22 @@ const MessagesThread = ({ person, messages } : Props) => {
     <div className='h-[calc(100vh-100px)]'>
       <div className='no-scrollbar overflow-auto h-[calc(100vh-182px)] flex flex-col gap-4 py-4'>
         {optmisticMessages.map((message) => (
-          <p
+          <div
+            // className='border border-red-600'
             key={message.id}
             className={`rounded-2xl w-3/4 p-2 ${
               message.owner === 'current' ? "rounded-bl-none text-chatonleft bg-leftchatbg" : "rounded-br-none relative ml-auto text-chatonright bg-white"
             } `}
           >
-            {message.text}
-            {!!message.sending && <small>(Sending)</small>}
-            <RiDeleteBin6Line />
-            <CiEdit />
-          </p>
+            <p>
+              {message.text}
+              {!!message.sending && <small>(Sending)</small>}
+            </p>
+            <div className='border flex gap-2'>
+              <RiDeleteBin6Line />
+              <CiEdit />
+            </div>
+          </div>
         ))}
         <p ref={messagesEndRef}/>
       </div>
